@@ -60,13 +60,12 @@ int main(void)
         else if ((rx_reg & 0xFF) == 0x52){
             GPIO_PORTF_DATA_R &= 0x02;
             GPIO_PORTF_DATA_R ^= 0x02;
-            message = 0x52;
+            message = 0x72;
             delayus(500000);
         }
 
-        else if (rx_reg & 0xF00){ // if any of the error bits are on
+        else{ // if any of the error bits are on
             GPIO_PORTF_DATA_R &= 0x00;
-            GPIO_PORTF_DATA_R ^= 0x00;
             message = 0x3F;
         }
 
